@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { logIn } from "@/Redux/Slices/AuthSlice";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import styles from "./Login.module.scss";
 import { Separator } from "@/components/ui/separator";
 import { z, ZodObject, ZodString } from "zod";
@@ -33,8 +33,8 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  const previousLocationPathname =
-    useLocation().state?.previousLocationPathname;
+  const previousLocationPathname = location.state?.previousLocationPathname;
+
   const isFetching = useSelector(
     (state: { state: { isFetching: boolean } }) => state.auth.state.isFetching
   );
@@ -51,9 +51,22 @@ const Login = () => {
     if (res.payload?.accessToken) {
       navigate(previousLocationPathname ?? "/");
       setErrorText("");
+    } else if (res?.error.message) {
+      setErrorText("There has been an error.");
+    } else {
+      setErrorText("There is no such user.");
     }
-    setErrorText("There is no such user.");
   };
+
+  if (previousLocationPathname && isAuthenticated && !isExpired(accessToken)) {
+    return (
+      <Navigate
+        to={previousLocationPathname}
+        state={{ from: location, previousLocationPathname: location.pathname }}
+        replace
+      />
+    );
+  }
   return (
     <main
       className={`flex justify-center items-center m-4 rounded-md border border-input bg-background ${styles.main}`}
