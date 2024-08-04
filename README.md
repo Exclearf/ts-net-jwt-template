@@ -1,5 +1,16 @@
 # [WIP] TS + ASP.Net REST Web API Example
 
+# Work In Progress:
+
+* Frontend
+    * Fallback to login/signup screen when auth promise is rejected
+    * Extract API routes to an .env file for possibility to have another backend
+    * Extract all resource strings into separate file for translations
+    * Clean the project
+* Backend
+    * Support different DBs
+    * Extract hard-coded token lifetime into .env
+
 ## Info
 
 This is just a simple template that can be used for greater things
