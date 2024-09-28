@@ -1,5 +1,4 @@
-import { FaGithub } from "react-icons/fa";
-import { FaGoogle } from "react-icons/fa";
+import { FaSpotify } from "react-icons/fa";
 import {
   Form,
   FormControl,
@@ -92,12 +91,8 @@ const CredentialsForm = ({
       <div className={styles.alternatives}>
         <Button variant="outline">
           {" "}
-          <FaGithub className={styles.icon} />
-          GitHub
-        </Button>
-        <Button variant="outline">
-          <FaGoogle className={styles.icon} />
-          Google
+          <FaSpotify className={styles.icon} />
+          Spotify
         </Button>
       </div>
     </div>

@@ -72,7 +72,7 @@ const Login = () => {
       className={`flex justify-center items-center m-4 rounded-md border border-input bg-background ${styles.main}`}
     >
       <div className={[styles.panel, styles.panel_side].join(" ")}>
-        <div className={styles.company_name}>Project Hub</div>
+        <div className={styles.company_name}>TuneTinder</div>
         <div className={styles.user_citation}>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum tempore
           doloremque fugiat laudantium.
@@ -85,7 +85,7 @@ const Login = () => {
         ) : (
           <CredentialsForm
             title="Login"
-            subTitle="Enter your username and password to continue"
+            subTitle="Enter your username and password"
             error={errorText}
             buttonText="Log In"
             formSchema={formSchema}
